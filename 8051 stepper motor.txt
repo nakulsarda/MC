@@ -1,0 +1,103 @@
+Rotating Motor Clockwise direction without timer
+#include<reg51.h>
+void msdelay(unsigned int time)
+{
+unsigned int i,j;
+for(i=0; i<=time; i++)
+for(j = 0; j<=1275; j++);
+}
+void main()
+{
+unsigned int STEP_CLK[4] = {0x09,0x0c,0x06,0x03};
+unsigned int i;
+unsigned int p2;
+while(1)
+{
+for(i=0; i<4; i++)
+{
+p2 = STEP_CLK[i];
+msdelay(100);
+}
+}
+}
+
+/////////////////////
+
+Rotating motor Anti-Clockwise Direction Without Timer
+#include<reg51.h>
+void msdelay(unsigned int time)
+{
+unsigned int i,j;
+for(i=0; i<=time; i++)
+for(j = 0; j<=1275; j++);
+}
+void main()
+{
+unsigned int STEP_CLK[4] = {0x09,0x0c,0x06,0x03};
+unsigned int i;
+unsigned int p2;
+while(1)
+{
+for(i=3; i<>=0 i--)
+{
+p2 = STEP_CLK[i];
+msdelay(100);
+}
+}
+}
+
+////////////////////////////////
+
+Rotating motor Clockwise Direction With Timer
+#include<reg51.h>
+void timerdelay(
+{
+TMOD = 0X01;
+TL0 = 0X00;
+TH0 = 0X0DC;
+TR0 = 0X01;
+while(TF0 == 0){};
+TR0 = 0X00;
+TF0 = 0X00;
+}
+void main(
+{
+unsigned int STEP_CLK[4] = {0X09,0X0C,0X06,0X03};
+unsigned int i ;
+while(1)
+{
+for(i=0; i<4; i++)
+{
+p2 = STEP_CLK[i];
+timerdelay{};
+}
+}
+}
+
+////////////////////////////////////////////
+
+Rotating motor Anti-Clockwise Direction With Timer
+#include<reg51.h>
+void timerdelay(
+{
+TMOD = 0X01;
+TL0 = 0X00;
+TH0 = 0X0DC;
+TR0 = 0X01;
+while(TF0 == 0){};
+TR0 = 0X00;
+TF0 = 0X00;
+}
+void main(
+{
+unsigned int STEP_CLK[4] = {0X09,0X0C,0X06,0X03};
+unsigned int i ;
+while(1)
+{
+for(i=3; i>8=0; i--)
+{
+p2 = STEP_CLK[i];
+timerdelay{};
+}
+}
+}
